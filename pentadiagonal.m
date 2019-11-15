@@ -11,7 +11,8 @@ function x = penta(A,myalpha,f)
     
     [Arow Acol] = size(A);
     Anew = A(:,3:Acol-2);
-    x = Anew\f;
+    %x = Anew\f;
+    x = gaussianelim(Anew,f);
     x = [myalpha(1:2);x;myalpha(3:4)];
 end
 

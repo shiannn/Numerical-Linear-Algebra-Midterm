@@ -1,20 +1,3 @@
-function [Ak,xk,Bk] = powerA(A,pow,b)
-    bk(:) = b(:);
-    bk = bk';
-    for count=pow:-1:1
-        A
-        bk
-        x = gaussianelim(A,bk);
-        A*x-bk
-        if(count~=1)
-            bk=x;
-        end
-    end
-    xk=x
-    Bk=bk
-    Ak=A
-end
-
 function x = gaussianelim(A,b);
     [row,col]=size(A);
     n = row;
@@ -44,4 +27,8 @@ function x = gaussianelim(A,b);
             x(i) = summation/A(i,i);
         end
     end
+    A
+    x
+    b 
+    A*x-b
 end

@@ -1,31 +1,3 @@
-function x = penta(A,myalpha,f)
-    %[A,myalpha,f]=getMatrix(m);
-    m = size(A,1);
-    
-    xtemp = zeros(m+4,1);
-    xtemp(1) = myalpha(1);
-    xtemp(2) = myalpha(2);
-    xtemp(m+3) = myalpha(3);
-    xtemp(m+4) = myalpha(4);
-    f = f - A*xtemp;
-    
-    [Arow Acol] = size(A);
-    Anew = A(:,3:Acol-2);
-    %x = Anew\f;
-    x = gaussianelimComplete(Anew,f);
-    x = [myalpha(1:2);x;myalpha(3:4)];
-end
-
-function [A,myalpha,f]=getMatrix(m)
-    coeff = rand(m,5);
-    f = rand(m,1);
-    myalpha = rand(4,1);
-    A = zeros(m,m+4);
-    for i=1:m 
-        A(i,i:i+4) = coeff(i,:);
-    end
-end
-
 function x = gaussianelimComplete(A,b);
     [row,col]=size(A);
     m = row;
